@@ -115,6 +115,31 @@ namespace WindowsFormsApp1
             return Color.FromArgb(
                 clamp(R, 0, 255), clamp(G, 0, 255), clamp(B, 0, 255));
         }
+
+        public void ConvertRGBimageHSV()
+        {
+            int width = rgbimage.Width;
+            int height = rgbimage.Height;
+            hsvImage = new HSVcolor[width, height];
+            for (int i =0;i<width;++i)
+                for (int j = 0; j < height; ++j)
+                {
+                    hsvImage [i,j]=RGBtoHSV(rgbimage.GetPixel(i, j));
+                }
+        }
+
+        public void ConvertHSVimagetoRGB()
+        {
+            int width = hsvImage.GetLength(0);
+
+            int height = hsvImage.GetLength(1);
+            rgbimage = new Bitmap(width, height);
+            for (int i = 0; i < width; ++i)
+                for (int j = 0; j < height; ++j)
+                {
+                    rgbimage.SetPixel(i, j, HSVtoRGB(hsvImage[i, j]));
+                }
+        }
     }
 
 
