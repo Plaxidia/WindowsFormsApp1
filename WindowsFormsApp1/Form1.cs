@@ -120,6 +120,26 @@ namespace WindowsFormsApp1
             pictureBox1.Image = cc.rgbimage;
             this.Cursor = Cursors.Default;
 
+
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string imagePath;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "image files|*.jpg;*.png";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imagePath = saveFileDialog.FileName;
+                cc.rgbimage.Save(imagePath);
+            }
+
+
         }
     }
+
+  
 }
+
+
